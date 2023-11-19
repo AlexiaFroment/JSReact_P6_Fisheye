@@ -5,22 +5,46 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="http://127.0.0.1:55318/Front-End-Fisheye/index.html"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
   <main id="main">
     <div class="photograph_header">
-      <div class="photograph_profile"></div>
       <div class="photograph_contact"><button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
-      <div class="photograph_img"></div>
     </div>
-    <div class="photograph_body"></div>
+    <div class="photograph_body">
+      <div class="filter">
+        <span class="filter_by">Trier par</span>
+        <div class="dropdown">
+          <button class="bloc_top">
+            <span>Popularité</span>
+            <span class="icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="bloc_filter">
+            <hr class="separator">
+            </hr>
+            <span>Date</span>
+            <hr class="separator">
+            </hr>
+            <span>Titre</span>
+          </div>
+        </div>
+
+
+
+      </div>
+      <section class="medias_container"></section>
+      <div class="block_likes_price">
+      </div>
   </main>
   <!-- MODAL -->
   <div id="contact_modal">
@@ -52,10 +76,13 @@
       </form>
     </div>
   </div>
+
   <!-- Templates -->
   <script src="scripts/templates/PhotographerTemplate.js"></script>
+  <script src="scripts/templates/MediaFactory.js"></script>
   <!-- Utils -->
   <script src="scripts/utils/contactForm.js"></script>
+  <script type="module" src="scripts/utils/filterBtn.js"></script>
   <!-- Pages -->
   <script src="scripts/pages/photographer.js"></script>
 </body>

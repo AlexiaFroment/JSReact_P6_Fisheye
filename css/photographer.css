@@ -1,3 +1,11 @@
+:root {
+  --white: white;
+  --black: black;
+  --first-color: #901c1c;
+  --scd-color: #fafafa;
+  --tertiary-color: #db8876;
+}
+
 /* header */
 header img.logo {
   width: 200px;
@@ -5,46 +13,52 @@ header img.logo {
 }
 /* Photograph-header */
 .photograph_header {
-  background-color: #fafafa;
+  background-color: var(--scd-color);
   height: 300px;
   margin: 0 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.photograph_profile {
+.photograph_infos {
   margin-left: 30px;
+  order: 1;
 }
-article h2 {
+.photograph_infos h2 {
   font-size: 64px;
-  color: #d3573c;
+  color: var(--tertiary-color);
   margin: 0;
   text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
 }
-article h3 {
+.photograph_infos h3 {
   font-size: 36px;
   font-weight: 900;
-  color: #901c1c;
+  color: var(--first-color);
   text-shadow: 3px 1px 4px rgba(0, 0, 0, 0.25);
   margin: 20px 0;
 }
-article p {
+.photograph_infos p {
   font-size: 30px;
   color: #525252;
   margin: 0;
 }
-
+.photograph_contact {
+  order: 2;
+}
 .contact_button {
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: var(--white);
   padding: 11px;
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: var(--first-color);
   border-radius: 5px;
   cursor: pointer;
+}
+.photograph_img {
+  order: 3;
 }
 .photograph_img img {
   height: 200px;
@@ -54,6 +68,134 @@ article p {
   object-fit: cover;
   margin-right: 30px;
 }
+/* Main part */
+/* filter */
+.photograph_body {
+  margin: 20px 100px;
+}
+.filter {
+  display: flex;
+}
+span.filter_by {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 7px 10px;
+  margin-right: 20px;
+  color: #464545;
+}
+
+.dropdown {
+  max-width: 300px;
+  height: 55px;
+  border-radius: 5px;
+  /* margin left: 100px; */
+  padding: 9px 20px;
+  color: var(--white);
+  background: var(--first-color);
+  transition: height 0.4s ease-in-out;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+button.bloc_top {
+  /* display: block; */
+  display: flex;
+  /* justify-content: space-around; */
+  /* align-items: center; */
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: var(--first-color);
+  border-radius: 5px;
+  color: var(--white);
+  font-size: 20px;
+  font-weight: bold;
+  font-family: open;
+  cursor: pointer;
+}
+button.bloc_top span {
+  padding: 10px;
+}
+button.bloc_top .icon {
+}
+.bloc_filter {
+  display: flex;
+  flex-direction: column;
+}
+hr.separator {
+  width: 90%;
+  background: white;
+  margin: 2 auto;
+}
+.bloc_filter span {
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.bloc_filter span:last-child {
+  padding-bottom: 25px;
+}
+
+/* Main part container MEF */
+.medias_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(4, 400px); */
+  gap: 20px 40px;
+  margin: 30px 0;
+  /* width: 100%; */
+  /* padding: 100px auto; */
+}
+article.card {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  aspect-ratio: 1/1;
+  width: 100%;
+  /* height: 550px; */
+}
+.media_img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  /* height: 475px;
+  width: 550px; */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+.media_mp4 {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+.info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title_photo {
+  font-size: 24px;
+  color: var(--first-color);
+  /* font-weight: bold; */
+}
+.likes_photo {
+  font-size: 24px;
+  color: var(--first-color);
+  /* font-weight: bold; */
+  /* margin-left: auto; */
+}
+/* Main part like and rate */
+.block_likes_price {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  min-width: 300px;
+  min-height: 80px;
+  background: var(--tertiary-color);
+  border-radius: 5px 5px 0 0;
+}
 
 /* Modal */
 #contact_modal {
@@ -61,7 +203,7 @@ article p {
 }
 .modal {
   border-radius: 5px;
-  background-color: #db8876;
+  background-color: var(--tertiary-color);
   width: 50%;
   display: flex;
   flex-direction: column;

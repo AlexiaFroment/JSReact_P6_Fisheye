@@ -7,27 +7,44 @@
 const params = new URLSearchParams(document.location.search);
 const id = params.get("id");
 
-async function getPhotographers() {
+async function getData() {
   const response = await fetch("./data/photographers.json");
-  const photographers = await response.json();
-  return photographers;
+  const data = await response.json();
+  return data;
 }
 
-async function displayData(photographers) {
-  const indexPhotographer = photographers.findIndex(
-    (photographer) => photographer.id == id
-  );
+// Header part
+async function displayHeaderPhotographer(photographers) {
+  // Get index photographer
+  const indexPhotographer = photographers.findIndex((data) => data.id == id);
+  // Find photographer by index
   const photographer = photographers[indexPhotographer];
-  const photographerHeader = document.querySelector("#main .photograph_header");
-  console.log(photographerHeader);
-  const photographerModel = photographerTemplate(photographer);
-  const photographerCardHeaderDom =
-    photographerModel.getPhotographerHeaderDOM(photographer);
-  photographerHeader.appendChild(photographerCardHeaderDom);
+
+  // Display Data
+  const photographHeader = document.querySelector("#main .photograph_header");
+  const photographModel = photographerTemplate(photographer);
+  const photographDetails = photographModel.getInfoHeader();
+  const photographImg = photographModel.getImgHeader();
+  // Appendchild
+  photographHeader.appendChild(photographDetails);
+  photographHeader.appendChild(photographImg);
+}
+
+async function displayMedias(medias) {
+  //  filter photographerId
+  const mediasToDisplay = medias.filter((media) => id == media.photographerId);
+  const photographerMedias = document.querySelector(".medias_container");
+
+  mediasToDisplay.forEach((media) => {
+    const mediaModel = mediaFactory(media);
+    const mediaCardDetails = mediaModel.getMediasMainDOM();
+    photographerMedias.appendChild(mediaCardDetails);
+  });
 }
 
 async function init() {
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  const { photographers, media } = await getData();
+  displayHeaderPhotographer(photographers);
+  displayMedias(media);
 }
 init();
