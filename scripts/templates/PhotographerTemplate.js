@@ -52,7 +52,8 @@ function photographerTemplate(data) {
     // First part => link on name and photo
     const a = document.createElement("a");
     a.className = "page-link";
-    a.href = `/Front-End-Fisheye/photographer.html?id=${id}`;
+    // a.href = `/Front-End-Fisheye/photographer.html?id=${id}`;
+    a.href = `/photographer.html?id=${id}`;
     // Div with img and H2
     const div = document.createElement("div");
     div.className = "card-link";
