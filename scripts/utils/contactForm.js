@@ -1,19 +1,16 @@
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
 
-const validationIcons = document.querySelectorAll(".check-icon");
-const errorMsg = document.querySelectorAll(".error-msg");
-
 const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 const regexEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const messageInput = document.querySelector("textarea");
-console.log(messageInput);
+
+const validationIcons = document.querySelectorAll(".check-icon");
+const errorMsg = document.querySelectorAll(".error-msg");
 const form = document.querySelector("form");
 const btnSubmit = document.querySelector(".submit_button");
-
-// console.log({ form, btnSubmit });
 
 const inputsValidity = {
   fName: false,
@@ -22,7 +19,31 @@ const inputsValidity = {
   message: false,
 };
 let isAnimated = false;
-// console.log(inputsValidity);
+
+async function getData() {
+  const response = await fetch("./data/photographers.json");
+  const data = await response.json();
+  return data;
+}
+
+async function displayName(photographers) {
+  // Get index photographer
+  const indexPhotographer = photographers.findIndex((data) => data.id == id);
+  // Find photographer by index
+  const photographer = photographers[indexPhotographer];
+
+  // Display Data
+  const contactMe = document.querySelector(".modal .contact");
+  const photographModel = photographerTemplate(photographer);
+  const photographName = photographModel.getNameIntoModal();
+  contactMe.appendChild(photographName);
+}
+
+async function init() {
+  const { photographers } = await getData();
+  displayName(photographers);
+}
+init();
 
 modalTriggers.forEach((trigger) =>
   trigger.addEventListener("click", toggleModal)
@@ -119,31 +140,3 @@ form.addEventListener("submit", function (event) {
     location.reload();
   }
 });
-
-// form.addEventListener("submit", handleForm);
-// let isAnimated = false;
-// console.log(handleForm);
-
-// function handleForm(e) {
-//   e.preventDefault();
-
-//   const keys = Object.keys(inputsValidity);
-//   console.log(inputsValidity);
-//   const failedInputs = keys.filter((key) => !inputsValidity[key]);
-//   console.log(failedInputs, btnSubmit);
-
-//   if (failedInputs.length && !isAnimating) {
-//     isAnimated = true;
-//     btnSubmit.classList.add("shake");
-//     setTimeout(() => {
-//       btnSubmit.classList.remove("shake");
-//       isAnimated = false;
-//     }, 400);
-//     failedInputs.forEach((input) => {
-//       const index = key.indexOf(input);
-//       showValidation({ index: index, validation: false });
-//     });
-//   } else {
-//     alert("Données envoyées avec succès :-)");
-//   }
-// }

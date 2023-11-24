@@ -2,6 +2,13 @@ function photographerTemplate(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
 
+  function getNameIntoModal() {
+    const h3 = document.createElement("h3");
+    h3.textContent = name;
+
+    return h3;
+  }
+
   // Header photographer page => infos
   function getInfoHeader() {
     // Block1 => name,location,tagline
@@ -35,7 +42,7 @@ function photographerTemplate(data) {
     // portrait;
     const img = document.createElement("img");
     img.setAttribute("src", picture);
-    img.href = name;
+    img.alt = name;
 
     // appendChild
     div.appendChild(img);
@@ -93,6 +100,7 @@ function photographerTemplate(data) {
     tagline,
     price,
     picture,
+    getNameIntoModal,
     getInfoHeader,
     getImgHeader,
     getUserCardDOM,

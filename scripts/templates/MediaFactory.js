@@ -13,11 +13,13 @@ function mediaFactory(media) {
       const picture = document.createElement("img");
       picture.className = `media_img`;
       picture.setAttribute("src", img);
+      picture.alt = title;
       media.appendChild(picture);
     } else {
       const film = document.createElement("video");
       film.className = `media_mp4`;
       film.setAttribute("src", mp4);
+      film.alt = title;
       media.appendChild(film);
     }
 

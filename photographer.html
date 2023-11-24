@@ -53,7 +53,9 @@
 
     <div class="modal" role="dialog" aria-labelledby="modalTitle">
       <header>
-        <h2 id="modalTitle">Contactez-moi</h2>
+        <div class="contact">
+          <h2 id="modalTitle">Contactez-moi</h2>
+        </div>
         <img src="assets/icons/close.svg" class="close-modal modal-trigger" aria-label="close-modal" />
       </header>
       <form>
@@ -61,8 +63,7 @@
         <div class="form_data">
           <label for="firstName">Prénom</label>
           <div class="icon-input-verif">
-            <input autocomplete="on" required type="text" id="firstName" name="firstName"
-              placeholder="3 caractères minimum" />
+            <input required type="text" id="firstName" name="firstName" placeholder="3 caractères minimum" />
             <img src="assets/icons/check.svg" alt="icone de validation" class="check-icon">
           </div>
           <span class="error-msg">Votre prénom doit contenir au moins 3 caractères</span>
@@ -71,8 +72,7 @@
         <div class="form_data">
           <label for="lastName">Nom</label>
           <div class="icon-input-verif">
-            <input autocomplete="on" required type="text" id="lastName" name="lastName" minlength="3"
-              placeholder="3 caractères minimum" />
+            <input required type="text" id="lastName" name="lastName" placeholder="3 caractères minimum" />
             <img src="assets/icons/check.svg" alt="icone de validation" class="check-icon">
           </div>
           <span class="error-msg">Votre nom doit contenir au moins 3 caractères</span>
@@ -80,7 +80,7 @@
         <div class="form_data">
           <label for="email">Email</label>
           <div class="icon-input-verif">
-            <input autocomplete="on" required type="text" id="email" name="email" />
+            <input required type="text" id="email" name="email" />
             <img src="assets/icons/check.svg" alt="icone de validation" class="check-icon">
           </div>
           <span class="error-msg">Ce format d'email n'est pas valide</span>
@@ -93,8 +93,7 @@
           </div>
           <span class="error-msg">Votre message doit contenir au moins 20 caractères</span>
         </div>
-        <!-- <button type="submit" class="submit_button">Envoyer</button> -->
-        <input type="submit" class="submit_button" value="Envoyer">
+        <button type="submit" class="submit_button">Envoyer</button>
       </form>
     </div>
 
