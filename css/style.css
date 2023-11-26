@@ -1,3 +1,5 @@
+@import url("photographer.css");
+
 :root {
   --white: white;
   --black: black;
@@ -6,8 +8,6 @@
   --scd-color: #fafafa;
   --tertiary-color: #db8876;
 }
-
-@import url("photographer.css");
 
 body {
   font-family: "DM Sans", sans-serif;

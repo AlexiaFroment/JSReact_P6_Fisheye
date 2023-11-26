@@ -19,7 +19,8 @@ async function displayHeaderPhotographer(photographers) {
   const indexPhotographer = photographers.findIndex((data) => data.id == id);
   // Find photographer by index
   const photographer = photographers[indexPhotographer];
-
+  const nameModal = document.querySelector("#contact-name");
+  nameModal.innerHTML = photographer.name;
   // Display Data
   const photographHeader = document.querySelector("#main .photograph_header");
   const photographModel = photographerTemplate(photographer);

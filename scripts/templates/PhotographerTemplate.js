@@ -15,7 +15,6 @@ function photographerTemplate(data) {
     // name
     const div = document.createElement("div");
     div.className = "photograph_infos";
-
     const h2 = document.createElement("h2");
     h2.textContent = name;
     // location = city and country

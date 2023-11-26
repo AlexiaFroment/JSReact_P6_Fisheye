@@ -20,31 +20,6 @@ const inputsValidity = {
 };
 let isAnimated = false;
 
-async function getData() {
-  const response = await fetch("./data/photographers.json");
-  const data = await response.json();
-  return data;
-}
-
-async function displayName(photographers) {
-  // Get index photographer
-  const indexPhotographer = photographers.findIndex((data) => data.id == id);
-  // Find photographer by index
-  const photographer = photographers[indexPhotographer];
-
-  // Display Data
-  const contactMe = document.querySelector(".modal .contact");
-  const photographModel = photographerTemplate(photographer);
-  const photographName = photographModel.getNameIntoModal();
-  contactMe.appendChild(photographName);
-}
-
-async function init() {
-  const { photographers } = await getData();
-  displayName(photographers);
-}
-init();
-
 modalTriggers.forEach((trigger) =>
   trigger.addEventListener("click", toggleModal)
 );
@@ -94,7 +69,7 @@ messageInput.addEventListener("input", messageValidation);
 messageInput.addEventListener("blur", messageValidation);
 
 function messageValidation() {
-  if (messageInput.value.length >= 20) {
+  if (messageInput.value.length >= 10) {
     showValidation({ index: 3, validation: true });
     inputsValidity.message = true;
   } else {
@@ -117,7 +92,6 @@ function showValidation({ index, validation }) {
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log("clic");
 
   const keys = Object.keys(inputsValidity);
   console.log(inputsValidity);
@@ -136,7 +110,14 @@ form.addEventListener("submit", function (event) {
       showValidation({ index: index, validation: false });
     });
   } else {
+    console.log(`
+    prénom : ${firstName.value}
+    nom : ${lastName.value}
+    email : ${email.value}
+    message : ${messageInput.value} `);
     toggleModal();
-    location.reload();
+    setTimeout(() => {
+      location.reload();
+    }, 4000);
   }
 });
