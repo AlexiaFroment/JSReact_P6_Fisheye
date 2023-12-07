@@ -1,6 +1,6 @@
 function photographerTemplate(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
-  const picture = `assets/photographers/${portrait}`;
+  // const picture = `assets/photographers/${portrait}`;
 
   function getNameIntoModal() {
     const h3 = document.createElement("h3");
@@ -40,7 +40,7 @@ function photographerTemplate(data) {
 
     // portrait;
     const img = document.createElement("img");
-    img.setAttribute("src", picture);
+    img.src = `assets/photographers/${portrait}`;
     img.alt = name;
 
     // appendChild
@@ -65,7 +65,8 @@ function photographerTemplate(data) {
     div.className = "card-link";
     // Portrait
     const img = document.createElement("img");
-    img.setAttribute("src", picture);
+    img.src = `assets/photographers/${portrait}`;
+    img.alt = portrait;
     // Name
     const h2 = document.createElement("h2");
     h2.textContent = name;
@@ -98,7 +99,7 @@ function photographerTemplate(data) {
     country,
     tagline,
     price,
-    picture,
+    // picture,
     getNameIntoModal,
     getInfoHeader,
     getImgHeader,

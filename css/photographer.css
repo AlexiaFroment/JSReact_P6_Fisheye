@@ -7,6 +7,10 @@
   --tertiary-color: #db8876;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 /* header */
 header img.logo {
   width: 200px;

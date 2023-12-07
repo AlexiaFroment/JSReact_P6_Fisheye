@@ -1,7 +1,5 @@
 function mediaFactory(media) {
   const { id, photographerId, title, image, video, likes, date, price } = media;
-  const img = `assets/medias/${image}`;
-  const mp4 = `assets/medias/${video}`;
 
   function getMediasMainDOM() {
     const article = document.createElement("article");
@@ -12,15 +10,17 @@ function mediaFactory(media) {
     if (video == undefined) {
       const picture = document.createElement("img");
       picture.className = `media_img`;
-      picture.setAttribute("src", img);
+      picture.src = `assets/medias/${image}`;
       picture.alt = title;
       media.appendChild(picture);
+      media.addEventListener("click", toggleCarroussel);
     } else {
       const film = document.createElement("video");
       film.className = `media_mp4`;
-      film.setAttribute("src", mp4);
+      film.src = `assets/medias/${video}`;
       film.alt = title;
       media.appendChild(film);
+      media.addEventListener("click", toggleCarroussel);
     }
 
     // Section title and likes

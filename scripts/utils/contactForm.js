@@ -1,5 +1,9 @@
-const modalContainer = document.querySelector(".modal-container");
+const modalContainer = document.querySelector(".modal_form");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
+const body = document.querySelector("#body");
+const main = document.querySelector("#main");
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector(".close-modal");
 
 const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
@@ -23,9 +27,34 @@ let isAnimated = false;
 modalTriggers.forEach((trigger) =>
   trigger.addEventListener("click", toggleModal)
 );
+
+// ❌ doesn't work, look for the good event
+closeBtn.addEventListener("keydown", closeModal);
+function closeModal() {
+  console.log("keydown !");
+  modalContainer.remove("active");
+}
+
 function toggleModal() {
   modalContainer.classList.toggle("active");
+  // closeBtn.focus();
+  if (modalContainer.classList.contains("active")) {
+    body.classList.add("no-scroll");
+    main.ariaHidden = "true";
+    modalContainer.ariaHidden = "false";
+    closeBtn.focus();
+  } else {
+    body.classList.remove("no-scroll");
+    main.ariaHidden = "false";
+    modalContainer.ariaHidden = "true";
+    form.reset();
+  }
 }
+// closeBtn.addEventListener("click", closeModal);
+// function closeModal() {
+//   console.log("ferme");
+//   // modalContainer.style.visibility = "hidden";
+// }
 
 firstName.addEventListener("input", firstNameValidation);
 firstName.addEventListener("blur", firstNameValidation);
@@ -116,8 +145,6 @@ form.addEventListener("submit", function (event) {
     email : ${email.value}
     message : ${messageInput.value} `);
     toggleModal();
-    setTimeout(() => {
-      location.reload();
-    }, 4000);
+    form.reset();
   }
 });
